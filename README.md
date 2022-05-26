@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# QATAR 2022 FIFA World Cup Pool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web application to manage QATAR 2022 FIFA World Cup Pool.
 
-## Available Scripts
+Features:
+* Realtime results for matches and leaderboard.
+* Select your predictions.
+* View others predictions.
+* Social login (Twitter, Facebook, Google, GitHub).
+
+Stack:
+* [Create React App](https://github.com/facebook/create-react-app).
+* [TypeScript](https://www.typescriptlang.org/).
+* [Firebase Realtime Database](https://firebase.google.com/).
+* [TailwindCSS](https://tailwindcss.com/)
+
+
+## Install
+
+* First you need to setup a [Firebase Realtime Database](https://firebase.google.com/).
+* Import `initial-data/qatar2022.json` to your database.
+* Create a `env.local` file with your Firebase config:
+```
+REACT_APP_FIREBASE_API_KEY             = "Your API key"
+REACT_APP_FIREBASE_AUTH_DOMAIN         = "            "
+REACT_APP_FIREBASE_DATABASE_URL        = "            "
+REACT_APP_FIREBASE_PROJECT_ID          = "            "
+REACT_APP_FIREBASE_STORAGE_BUCKET      = "            "
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID = "            "
+REACT_APP_FIREBASE_APP_ID              = "            "
+REACT_APP_FIREBASE_MEASUREMENT_ID      = "            "
+```
+
+## Running
 
 In the project directory, you can run:
 
-### `yarn start`
+`yarn start`
 
-Runs the app in the development mode.\
+Starts the development server.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The page will reload if you make edits.
 
-### `yarn test`
+## Deploy
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the project directory, you can run:
 
-### `yarn build`
+`yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder, then you copy these files to your server.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You can take a look about [deployment](https://create-react-app.dev/docs/deployment/) for more information.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Since this project uses Firebase, you can choose [Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart). 
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contribute
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Your help is very welcome, feel free to send a pull request.
