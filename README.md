@@ -14,6 +14,14 @@ Stack:
 * [Firebase Realtime Database](https://firebase.google.com/).
 * [TailwindCSS](https://tailwindcss.com/)
 
+## Screenshots
+
+### Predictions
+<img width="640" alt="predictions" src="https://user-images.githubusercontent.com/119507/170556460-d1efc17c-90e4-4107-b150-c35a1ed41943.png">
+
+### Leaderboard
+<img width="640" alt="main" src="https://user-images.githubusercontent.com/119507/170556475-938e40aa-a0bb-422f-bd07-0dbb4d6fe7a9.png">
+
 
 ## Install
 
