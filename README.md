@@ -54,6 +54,11 @@ You can take a look about [deployment](https://create-react-app.dev/docs/deploym
 
 Since this project uses Firebase, you can choose [Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart). 
 
+## Cloud Functions 
+
+This project uses Cloud Functions to trigger user score updates.\
+Repository and install instruccions for [qatar2022-pool-functions](https://github.com/ionmx/qatar2022-pool-functions).
+
 
 ## Contribute
 
