@@ -2,6 +2,8 @@
 
 Web application to manage QATAR 2022 FIFA World Cup Pool.
 
+**This project is currently on development**
+
 Features:
 * Realtime results for matches and leaderboard.
 * Select your predictions.
