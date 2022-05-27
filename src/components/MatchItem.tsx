@@ -11,20 +11,20 @@ export default (match: MatchProps) => {
       <table className="w-full border-separate [border-spacing:0.75rem]">
         <tbody>
           <tr>
-            <td className="w-10"><img className="w-12 border" src={homeFlag} /></td>
-            <td className="text-xl">{match.homeName}</td>
-            <td className="text-right">
+            <td className="w-10"><img className="w-8 md:w-12 border" src={homeFlag} /></td>
+            <td className="text-sm md:text-xl">{match.homeName}</td>
+            <td className="text-sm md:text-base text-right">
               <>{match.homeScore! > -1 ? match.homeScore : <span className="text-gray-300">--</span>}</>
             </td>
           </tr>
           <tr>
-            <td><img className="w-12 border" src={awayFlag} /></td>
-            <td className="text-xl">{match.awayName}</td>
-            <td className="text-right">
+            <td><img className="w-8 md:w-12 border" src={awayFlag} /></td>
+            <td className="text-sm md:text-xl">{match.awayName}</td>
+            <td className="text-sm md:text-base text-right">
               <>{match.awayScore! > -1 ? match.awayScore : <span className="text-gray-300">--</span>}</>
             </td>
           </tr>
-          <tr>
+          <tr className="hidden md:table-row">
             <td colSpan={5} className="text-xs text-gray-700">
               Group: {match.group} · {match.location} · <Moment format="MMM DD, HH:mm">{match.date}</Moment>
             </td>

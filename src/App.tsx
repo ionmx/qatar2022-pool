@@ -67,15 +67,16 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <h2 className="text-2xl my-4 font-bold text-gray-900">Today's games</h2>
-            {matches?.map((match, index) => {
-              matchDate = moment(match.date).format('YYYYMMDD');
-              if (matchDate == currentDate) {
-                return (
-                  <MatchItem key={match.id} {...match} />
-                );
-              }
-            })}
-
+            <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
+              {matches?.map((match, index) => {
+                matchDate = moment(match.date).format('YYYYMMDD');
+                if (matchDate == currentDate) {
+                  return (
+                    <MatchItem key={match.id} {...match} />
+                  );
+                }
+              })}
+            </div>
           </div>
           <div>
             <h2 className="text-2xl my-4 font-bold text-gray-900">Leaderboard</h2>
