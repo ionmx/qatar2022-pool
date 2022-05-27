@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth, db, FirebaseUser } from "../config/firebase";
 import { ref, set, get, child, DatabaseReference, DataSnapshot } from "firebase/database";
+import BouncingBall from "../components/BouncingBall";
 
 interface AuthProviderProps {
   children?: JSX.Element | JSX.Element[];
@@ -43,9 +44,9 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
     });
   }, []);
 
-  // if (authLoading) {
-  //   return <></>
-  // } 
+  if (authLoading) {
+    return <BouncingBall/>;
+  }
   return (
     <AuthContext.Provider value={user}>
       {children}
