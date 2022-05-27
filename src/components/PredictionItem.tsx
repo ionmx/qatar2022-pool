@@ -41,8 +41,8 @@ export default (match: PredictionProps) => {
             <td className="text-right">
               <>{match.homeScore! > -1 ? match.homeScore : <span className="text-gray-300">--</span>}</>
             </td>
-            <td rowSpan={2} className="text-right text-green-500 text-3xl w-10">
-              <>{match.points! > -1 ? match.points : <span className="text-gray-300">--</span>}</>
+            <td rowSpan={2} className="text-right w-10">
+              {match.points! > -1 ? <div className="text-xl text-center rounded-full text-amber-900 bg-amber-300 p-1">{match.points}</div> : <span className="text-gray-300">--</span>}
             </td>
           </tr>
           <tr>
