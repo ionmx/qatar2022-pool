@@ -3,14 +3,13 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext';
 import { useMatches } from '../context/MatchesContext';
 import { db } from '../config/firebase';
-import { ref, set, get, child, DatabaseReference, DataSnapshot, onValue } from 'firebase/database';
+import { get, ref, orderByChild, equalTo, query, DatabaseReference, onValue } from 'firebase/database';
 import { UserProps, PredictionProps } from '../interfaces'
 import Navbar from '../components/Navbar';
 import PredictionItem from '../components/PredictionItem';
 import moment from 'moment'
 import Header from '../components/Header'
 import { PredictionsContainer } from '../components/Containers';
-
 
 
 export default function UserProfile() {
@@ -21,26 +20,26 @@ export default function UserProfile() {
   const [user, setUser] = useState<UserProps | null>(null);
   const [userPredictions, setUserPredictions] = useState<PredictionProps[] | null>(null);
 
-  const userRef: DatabaseReference = ref(db, `users/${id}`)
+  
   useEffect(() => {
-    const userRef: DatabaseReference = ref(db, `users/${id}`)
-    onValue(userRef, (snapshot) => {
+    const q = query(ref(db, 'users'), orderByChild('userName'), equalTo(`${id}`));
+    get(q).then((snapshot) => {
       if (snapshot.exists()) {
-        const u: UserProps = { ...snapshot.val() };
+        const k: string = Object.keys(snapshot.val())[0];
+        const u: UserProps = { ...snapshot.val()[k] };
         setUser(u);
-        console.log(`predictions/${snapshot.key}`);
-        const predictionsRef: DatabaseReference = ref(db, `predictions/${snapshot.key}`);
+        const predictionsRef: DatabaseReference = ref(db, `predictions/${k}`);
         onValue(predictionsRef, (snapshotPredictions) => {
           const predictionsList = new Map<string, PredictionProps>();
           matches?.forEach((match) => {
-            predictionsList.set(match.id, { ...match, homePrediction: -1, awayPrediction: -1, points: -1, uid: id! });
+            predictionsList.set(match.id, { ...match, homePrediction: -1, awayPrediction: -1, points: -1, uid: k! });
           });
           snapshotPredictions.forEach((childSnapshot) => {
-            const id = childSnapshot.key;
-            if (id) {
-              const item = predictionsList.get(id);
+            const childId = childSnapshot.key;
+            if (childId) {
+              const item = predictionsList.get(childId);
               if (item) {
-                predictionsList.set(id, { ...item, ...childSnapshot.val() });
+                predictionsList.set(childId, { ...item, ...childSnapshot.val() });
               }
             }
           });

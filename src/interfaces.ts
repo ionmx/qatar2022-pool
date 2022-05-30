@@ -17,6 +17,7 @@ export interface MatchProps {
 export interface UserProps {
   id: string;
   email: string;
+  userName: string;
   displayName: string;
   photoURL: string;
   ranking: number;

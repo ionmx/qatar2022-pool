@@ -85,7 +85,7 @@ function App() {
                 <tbody>
                   {users && users?.map((user, index) => {
                     return (
-                      <tr key={user.id} onClick={() => navigate(`/user/${user.id}`)} className="hover:cursor-pointer">
+                      <tr key={user.id} onClick={() => navigate(`/user/${user.userName}`)} className="hover:cursor-pointer">
                         <td className="text-right text-gray-500">{user.ranking}<sup>{getOrdinalSuffix(user.ranking)}</sup></td>
                         <td className={`w-14 h-14 ranking-${user.ranking}`}><img className="h-12 w-12 rounded-full" src={user.photoURL} /></td>
                         <td className="text-xl">{user.displayName}</td>
