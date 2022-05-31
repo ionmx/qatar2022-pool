@@ -13,7 +13,7 @@ import { PredictionsContainer } from '../components/Containers';
 
 
 export default function UserProfile() {
-  const currentUser = useAuth()?.user;
+  const currentUser = useAuth();
   const matches = useMatches();
   const { id } = useParams();
   const [loading, setLoading] = useState<Boolean>(true);
