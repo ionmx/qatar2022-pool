@@ -34,12 +34,12 @@ export default function SignIn() {
   const navigate = useNavigate();
   const [userLoading, setUserLoading] = useState<Boolean>(true);
   useEffect(() => {
-    if (user) {
+    if (user && userName) {
       navigate(`/user/${userName}`);
     } else {
       setUserLoading(false);
     }
-  }, [user]);
+  }, [user, userName]);
 
   if (userLoading) {
     return <BouncingBall />

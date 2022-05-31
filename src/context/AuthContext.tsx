@@ -29,6 +29,7 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
 
   useEffect(() => {
     auth.onAuthStateChanged(u => {
+      setUser(u);
       if (u) {
         const dbRef: DatabaseReference = ref(db);
         get(child(dbRef, `users/${u?.uid}`)).then((snapshot: DataSnapshot) => {
@@ -52,7 +53,6 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
         }).catch((error: Error) => {
           console.error(error);
         });
-        setUser(u);
         setAuthLoading(false);
       } else {
         setAuthLoading(false);
