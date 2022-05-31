@@ -1,6 +1,5 @@
 import { useParams, Navigate } from 'react-router-dom';
 import { useState, useEffect, Fragment } from 'react'
-import { useAuth } from '../context/AuthContext';
 import { useMatches } from '../context/MatchesContext';
 import { db } from '../config/firebase';
 import { get, ref, orderByChild, equalTo, query, DatabaseReference, onValue } from 'firebase/database';
@@ -13,7 +12,6 @@ import { PredictionsContainer } from '../components/Containers';
 
 
 export default function UserProfile() {
-  const currentUser = useAuth()?.user;
   const matches = useMatches();
   const { id } = useParams();
   const [loading, setLoading] = useState<Boolean>(true);
@@ -50,7 +48,7 @@ export default function UserProfile() {
         setLoading(false);
       }
     });
-  }, [matches]);
+  }, [matches, id]);
 
 
   if (!loading && !user) {
@@ -67,7 +65,7 @@ export default function UserProfile() {
       <PredictionsContainer>
         {userPredictions && userPredictions?.map((match, index) => {
           matchDate = moment(match.date).format('dddd, MMMM DD, YYYY');
-          if (matchDate != prevDate) {
+          if (matchDate !== prevDate) {
             prevDate = matchDate;
             return (
               <Fragment key={match.id}>

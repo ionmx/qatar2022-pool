@@ -36,9 +36,9 @@ export function MatchesProvider({ children }: MatchProviderProps): JSX.Element {
 
   }, []);
 
-  // if (matchesLoading) {
-  //   return <></>
-  // } 
+  if (matchesLoading) {
+    return <></>
+  } 
   return (
     <MatchesContext.Provider value={matches}>
       {children}

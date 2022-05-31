@@ -5,7 +5,7 @@ import { PredictionProps } from "../interfaces";
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-export default (match: PredictionProps) => {
+const PredictionItem = (match: PredictionProps) => {
   const user = useAuth()?.user;
   const homeFlag = require('../assets/' + match.home + '.webp');
   const awayFlag = require('../assets/' + match.away + '.webp');
@@ -23,10 +23,10 @@ export default (match: PredictionProps) => {
       <table className="w-full border-separate [border-spacing:0.75rem]">
         <tbody>
           <tr>
-            <td className="w-10"><img className="w-12 border" src={homeFlag} /></td>
+            <td className="w-10"><img className="w-12 border" alt={match.home} src={homeFlag} /></td>
             <td className="text-xl">{match.homeName}</td>
             <td className="text-right">
-              {match.uid == user?.uid && (
+              {match.uid === user?.uid && (
                 <input
                   type="number"
                   value={match.homePrediction! > -1 ? match.homePrediction : ''}
@@ -34,7 +34,7 @@ export default (match: PredictionProps) => {
                   className="w-16 shadow appearance-none border rounded py-1 px-2 text-gray-700 leading-tight text-center appearance-none outline-none"
                 />
               )}
-              {match.uid != user?.uid && (
+              {match.uid !== user?.uid && (
                 <span className="border p-2 rounded-md bg-gray-100">{match.homePrediction! > -1 ? match.homePrediction : '-'}</span>
               )}
             </td>
@@ -46,10 +46,10 @@ export default (match: PredictionProps) => {
             </td>
           </tr>
           <tr>
-            <td><img className="w-12 border" src={awayFlag} /></td>
+            <td><img className="w-12 border" alt={match.away} src={awayFlag} /></td>
             <td className="text-xl">{match.awayName}</td>
             <td className="text-right">
-              {match.uid == user?.uid && (
+              {match.uid === user?.uid && (
                 <input
                   type="number"
                   value={match.awayPrediction! > -1 ? match.awayPrediction : ''}
@@ -57,7 +57,7 @@ export default (match: PredictionProps) => {
                   className="w-16 shadow appearance-none border rounded py-1 px-2 text-gray-700 leading-tight text-center appearance-none outline-none"
                 />
               )}
-              {match.uid != user?.uid && (
+              {match.uid !== user?.uid && (
                 <span className="border p-2 rounded-md bg-gray-100">{match.awayPrediction! > -1 ? match.awayPrediction : '-'}</span>
               )}
             </td>
@@ -75,3 +75,5 @@ export default (match: PredictionProps) => {
     </div>
   )
 }
+
+export default PredictionItem;

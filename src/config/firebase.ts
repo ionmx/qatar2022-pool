@@ -30,4 +30,5 @@ getRedirectResult(auth)
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.email;
+      console.log(`AUTH ERROR: email = ${email}, code =  ${errorCode}, message = ${errorMessage}`);
     });

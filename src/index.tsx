@@ -6,15 +6,12 @@ import {
 } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { MatchesProvider } from "./context/MatchesContext";
-
 import App from "./App";
 import Rules from "./routes/rules";
 import SignIn from "./routes/signin";
 import Matches from "./routes/matches";
 import UserProfile from "./routes/user-profile";
-
-
-import reportWebVitals from './reportWebVitals';
+//import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

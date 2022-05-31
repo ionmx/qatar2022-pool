@@ -2,7 +2,7 @@ import { MatchProps } from "../interfaces";
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-export default (match: MatchProps) => {
+const MatchItem = (match: MatchProps) => {
   const homeFlag = require('../assets/' + match.home + '.webp');
   const awayFlag = require('../assets/' + match.away + '.webp');
 
@@ -11,14 +11,14 @@ export default (match: MatchProps) => {
       <table className="w-full border-separate [border-spacing:0.75rem]">
         <tbody>
           <tr>
-            <td className="w-10"><img className="w-8 md:w-12 border" src={homeFlag} /></td>
+            <td className="w-10"><img className="w-8 md:w-12 border" alt={match.home} src={homeFlag} /></td>
             <td className="text-sm md:text-xl">{match.homeName}</td>
             <td className="text-sm md:text-base text-right">
               <>{match.homeScore! > -1 ? match.homeScore : <span className="text-gray-300">--</span>}</>
             </td>
           </tr>
           <tr>
-            <td><img className="w-8 md:w-12 border" src={awayFlag} /></td>
+            <td><img className="w-8 md:w-12 border" alt={match.away} src={awayFlag} /></td>
             <td className="text-sm md:text-xl">{match.awayName}</td>
             <td className="text-sm md:text-base text-right">
               <>{match.awayScore! > -1 ? match.awayScore : <span className="text-gray-300">--</span>}</>
@@ -34,3 +34,5 @@ export default (match: MatchProps) => {
     </div>
   )
 }
+
+export default MatchItem;

@@ -28,7 +28,7 @@ function logout() {
   });
 }
 
-export default () => {
+const Navbar = () => {
   const user = useAuth()?.user;
   const userName = useAuth()?.userName;
   const navigate = useNavigate();
@@ -119,13 +119,12 @@ export default () => {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
+                            <button
                               onClick={logout}
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-[#450524]')}
+                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm w-full text-left text-[#450524]')}
                             >
                               Sign out
-                            </a>
+                            </button>
                           )}
                         </Menu.Item>
                       </Menu.Items>
@@ -163,3 +162,5 @@ export default () => {
     </Disclosure>
   )
 }
+
+export default Navbar;

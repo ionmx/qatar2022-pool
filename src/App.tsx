@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db, auth } from "./config/firebase";
+import { db } from "./config/firebase";
 import { ref, onValue, DatabaseReference } from 'firebase/database';
 import './App.css';
 import { UserProps } from './interfaces'
@@ -16,7 +16,6 @@ function App() {
   const navigate = useNavigate();
 
   // TODO: Display current user position
-  const currentUser = auth.currentUser;
 
   // TODO: Display today matches
   const matches = useMatches();
@@ -43,7 +42,7 @@ function App() {
         let ranking = 0;
         let prevScore = 0;
         usersList.forEach((item) => {
-          if (prevScore != item.score) {
+          if (prevScore !== item.score) {
             ranking += 1;
           }
           item.ranking = ranking;
@@ -57,8 +56,8 @@ function App() {
 
   let matchDate = '';
   let currentDate = moment(new Date()).format('YYYYMMDD');
-  {/* FIXME: For dev purposes we use first match date */ }
-  currentDate = '20221121';
+  currentDate = '20221121';  // FIXME: For dev purposes we use first match date 
+
 
   return (
     <>
@@ -68,12 +67,14 @@ function App() {
           <div>
             <h2 className="text-2xl my-4 font-bold text-gray-900">Today's games</h2>
             <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
-              {matches?.map((match, index) => {
+              {matches?.map((match) => {
                 matchDate = moment(match.date).format('YYYYMMDD');
-                if (matchDate == currentDate) {
+                if (matchDate === currentDate) {
                   return (
                     <MatchItem key={match.id} {...match} />
                   );
+                } else {
+                  return <></>;
                 }
               })}
             </div>
@@ -83,11 +84,11 @@ function App() {
             <div className="py-4 px-8 bg-white shadow-lg rounded-lg my-2">
               <table className="w-full border-separate [border-spacing:0.75rem]">
                 <tbody>
-                  {users && users?.map((user, index) => {
+                  {users && users?.map((user) => {
                     return (
                       <tr key={user.id} onClick={() => navigate(`/user/${user.userName}`)} className="hover:cursor-pointer">
                         <td className="text-right text-gray-500">{user.ranking}<sup>{getOrdinalSuffix(user.ranking)}</sup></td>
-                        <td className={`w-14 h-14 ranking-${user.ranking}`}><img className="h-12 w-12 rounded-full" src={user.photoURL} /></td>
+                        <td className={`w-14 h-14 ranking-${user.ranking}`}><img className="h-12 w-12 rounded-full" alt={user.userName} src={user.photoURL} /></td>
                         <td className="text-xl">{user.displayName}</td>
                         <td className="text-right text-xl">{user.score}</td>
                       </tr>

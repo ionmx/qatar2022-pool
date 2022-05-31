@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import { MatchesContainer } from '../components/Containers';
 import { Fragment } from 'react';
 
-export default () => {
+const Matches = () => {
   const matches = useMatches();
 
   let prevDate = '';
@@ -19,7 +19,7 @@ export default () => {
       <MatchesContainer>
         {matches?.map((match, index) => {
           matchDate = moment(match.date).format('dddd, MMMM DD, YYYY');
-          if (matchDate != prevDate) {
+          if (matchDate !== prevDate) {
             prevDate = matchDate;
             return (
               <Fragment key={`${match.id}-header`}>
@@ -38,3 +38,5 @@ export default () => {
     </>
   );
 }
+
+export default Matches;

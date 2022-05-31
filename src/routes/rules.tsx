@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import { DefaultContainer } from '../components/Containers';
 
 
-export default () => {
+const Rules = () => {
   return (
     <>
       <Navbar />
@@ -14,3 +14,5 @@ export default () => {
     </>
   );
 }
+
+export default Rules;
