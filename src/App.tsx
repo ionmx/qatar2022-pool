@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from "./config/firebase";
 import { ref, onValue, DatabaseReference } from 'firebase/database';
@@ -74,7 +74,7 @@ function App() {
                     <MatchItem key={match.id} {...match} />
                   );
                 } else {
-                  return <></>;
+                  return <Fragment key={match.id}></Fragment>;
                 }
               })}
             </div>
