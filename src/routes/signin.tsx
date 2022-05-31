@@ -29,17 +29,18 @@ const signInWithFacebook = () => {
 }
 
 export default function SignIn() {
-  const user = useAuth()?.user;
-  const userName = useAuth()?.userName;
+  const useauth = useAuth();
   const navigate = useNavigate();
   const [userLoading, setUserLoading] = useState<Boolean>(true);
   useEffect(() => {
+    const user = useauth?.user;
+    const userName = useauth?.userName;
     if (user && userName) {
       navigate(`/user/${userName}`);
     } else {
       setUserLoading(false);
     }
-  }, [user, userName]);
+  }, [useauth]);
 
   if (userLoading) {
     return <BouncingBall />
