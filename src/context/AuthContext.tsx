@@ -21,14 +21,17 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
 
   useEffect(() => {
     auth.onAuthStateChanged(u => {
-      setUser(u);
       if (u) {
         const dbRef: DatabaseReference = ref(db);
         get(child(dbRef, `users/${u?.uid}`)).then((snapshot: DataSnapshot) => {
           // Add user if doesn't exists
+          const email = '' + u.email;
+          const username =  email.substring(0, email.lastIndexOf("@"));
+          // TODO: Search for duplicated username
           if (!snapshot.exists()) {
             set(ref(db, `users/${u?.uid}`), {
-              email: u?.email,
+              email: email,
+              userName: username, 
               displayName: u?.displayName,
               photoURL: u?.photoURL,
               score: 0
@@ -37,6 +40,7 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
         }).catch((error: Error) => {
           console.error(error);
         });
+        setUser(u);
         setAuthLoading(false);
       } else {
         setAuthLoading(false);
