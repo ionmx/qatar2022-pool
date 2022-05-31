@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "predictions": {
+      "$uid": {
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "users": {
+      ".indexOn": "userName",
+      "$uid": {
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "matches": {
+      ".indexOn": "timestamp"
+    },
+    ".read": "now < 1655013600000",  // 2022-6-12
+  }
+}
+
