@@ -6,7 +6,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 export default (match: PredictionProps) => {
-  const user = useAuth();
+  const user = useAuth()?.user;
   const homeFlag = require('../assets/' + match.home + '.webp');
   const awayFlag = require('../assets/' + match.away + '.webp');
 
