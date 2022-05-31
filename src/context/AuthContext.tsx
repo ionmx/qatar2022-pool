@@ -32,13 +32,12 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
         get(child(dbRef, `users/${u?.uid}`)).then((snapshot: DataSnapshot) => {
           // Add user if doesn't exists
           if (!snapshot.exists()) {
-            const email = '' + u.email;
+            const email: string = '' + u.email;
             let username: string = email.substring(0, email.lastIndexOf("@"));
 
             // Search for duplicated username
             const q = query(ref(db, 'users'), orderByChild('userName'), equalTo(`${username}`));
             get(q).then((userSnapshot) => {
-              console.log('YA CORRIO')
               if (userSnapshot.exists()) {
                 // Duplicated, change username
                 username = `${username}-${moment(new Date()).format("MMDDHHmmss")}`;

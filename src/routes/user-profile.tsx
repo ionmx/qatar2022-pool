@@ -1,5 +1,5 @@
 import { useParams, Navigate } from 'react-router-dom';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { useAuth } from '../context/AuthContext';
 import { useMatches } from '../context/MatchesContext';
 import { db } from '../config/firebase';
@@ -70,10 +70,10 @@ export default function UserProfile() {
           if (matchDate != prevDate) {
             prevDate = matchDate;
             return (
-              <>
+              <Fragment key={match.id}>
                 <div className="md:col-span-2 text-xl mt-4 bt-4">{matchDate}</div>
-                <PredictionItem key={match.id} {...match} />
-              </>
+                <PredictionItem {...match} />
+              </Fragment>
             );
           } else {
             prevDate = matchDate;
