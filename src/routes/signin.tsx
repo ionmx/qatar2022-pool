@@ -29,20 +29,13 @@ const signInWithFacebook = () => {
 }
 
 export default function SignIn() {
-
-  const user = useAuth();
+  const user = useAuth()?.user;
+  const userName = useAuth()?.userName;
   const navigate = useNavigate();
   const [userLoading, setUserLoading] = useState<Boolean>(true);
   useEffect(() => {
     if (user) {
-      console.log(`users/${user.uid}`);
-      get(child(ref(db), `users/${user.uid}`)).then((snapshot) => {
-        console.log(snapshot.val().userName);
-        setUserLoading(false);
-        //return <Navigate to={`/user/${snapshot.val().userName}`} replace={true} />;
-        navigate(`/user/${snapshot.val().userName}`);
-        console.log('Navega');
-      });
+      navigate(`/user/${userName}`);
     } else {
       setUserLoading(false);
     }

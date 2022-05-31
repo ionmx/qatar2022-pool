@@ -29,7 +29,8 @@ function logout() {
 }
 
 export default () => {
-  const user = useAuth();
+  const user = useAuth()?.user;
+  const userName = useAuth()?.userName;
   const navigate = useNavigate();
   
   return (
@@ -109,7 +110,7 @@ export default () => {
                         <Menu.Item>
                           {({ active }) => (
                             <Link
-                              to={`/user/${user.uid}`}
+                              to={`/user/${userName}`}
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-[#450524]')}
                             >
                               My predictions
