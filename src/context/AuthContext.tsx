@@ -12,14 +12,10 @@ interface AuthContextProps {
   userName: string | null | undefined;
 }
 
-//export const AuthContext = createContext<FirebaseUser | null>(null);
 export const AuthContext = createContext<AuthContextProps | null>(null);
 
-//export function useAuth(): FirebaseUser | null {
 export function useAuth(): AuthContextProps | null {
-  const context = useContext(AuthContext);
-  //if (!context) throw new Error("There is no Auth provider");
-  return context;
+  return useContext(AuthContext);
 }
 
 export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
@@ -50,10 +46,10 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
           } else {
             setUserName(snapshot.val().userName);
           }
+          setAuthLoading(false);
         }).catch((error: Error) => {
           console.error(error);
         });
-        setAuthLoading(false);
       } else {
         setAuthLoading(false);
       }
