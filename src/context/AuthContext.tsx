@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth, db, FirebaseUser } from "../config/firebase";
-import { ref, set, get, child, DatabaseReference, DataSnapshot } from "firebase/database";
+import { ref, set, get, child, query, orderByChild, equalTo, DatabaseReference, DataSnapshot } from "firebase/database";
 import BouncingBall from "../components/BouncingBall";
+import moment from "moment"
 
 interface AuthProviderProps {
   children?: JSX.Element | JSX.Element[];
@@ -29,19 +30,27 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
       if (u) {
         const dbRef: DatabaseReference = ref(db);
         get(child(dbRef, `users/${u?.uid}`)).then((snapshot: DataSnapshot) => {
-          
           // Add user if doesn't exists
           if (!snapshot.exists()) {
             const email = '' + u.email;
-            // TODO: Search for duplicated username
-            const username =  email.substring(0, email.lastIndexOf("@"));
-            setUserName(username);
-            set(ref(db, `users/${u?.uid}`), {
-              email: email,
-              userName: username, 
-              displayName: u?.displayName,
-              photoURL: u?.photoURL,
-              score: 0
+            let username: string = email.substring(0, email.lastIndexOf("@"));
+
+            // Search for duplicated username
+            const q = query(ref(db, 'users'), orderByChild('userName'), equalTo(`${username}`));
+            get(q).then((userSnapshot) => {
+              console.log('YA CORRIO')
+              if (userSnapshot.exists()) {
+                // Duplicated, change username
+                username = `${username}-${moment(new Date()).format("MMDDHHmmss")}`;
+              }
+              setUserName(username);
+              set(ref(db, `users/${u?.uid}`), {
+                email: email,
+                userName: username,
+                displayName: u?.displayName,
+                photoURL: u?.photoURL,
+                score: 0
+              });
             });
           } else {
             setUserName(snapshot.val().userName);
@@ -57,10 +66,10 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   }, []);
 
   if (authLoading) {
-    return <BouncingBall/>;
+    return <BouncingBall />;
   }
   return (
-    <AuthContext.Provider value={{user, userName}}>
+    <AuthContext.Provider value={{ user, userName }}>
       {children}
     </AuthContext.Provider>
   );
