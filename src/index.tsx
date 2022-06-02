@@ -10,6 +10,7 @@ import App from "./App";
 import Rules from "./routes/rules";
 import SignIn from "./routes/signin";
 import Matches from "./routes/matches";
+import Circles from "./routes/circles";
 import UserProfile from "./routes/user-profile";
 //import reportWebVitals from './reportWebVitals';
 
@@ -24,6 +25,7 @@ root.render(
           <Route path="/" element={<App />} />
           <Route path="rules" element={<Rules />} />
           <Route path="matches" element={<Matches />} />
+          <Route path="circles" element={<Circles />} />
           <Route path="user">
             <Route path=":id" element={<UserProfile />} />
           </Route>
