@@ -29,8 +29,8 @@ Stack:
 
 * First you need to setup a [Firebase Realtime Database](https://firebase.google.com/).
 * Import `initial-data/qatar2022.json` to your database.
-* Add rules `initial-data/rules.json` to your database.
-* Create a `env.local` file with your Firebase config:
+* Import rules `initial-data/rules.json` to your database.
+* Create a `.env.local` file with your Firebase config:
 ```
 REACT_APP_FIREBASE_API_KEY             = "Your API key"
 REACT_APP_FIREBASE_AUTH_DOMAIN         = "            "
