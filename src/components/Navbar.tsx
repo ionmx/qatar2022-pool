@@ -13,7 +13,6 @@ function isCurrent(route: String) { return window.location.pathname === route ? 
 const navigation = [
   { name: 'Leaderboard', href: '/' },
   { name: 'Matches', href: '/matches' },
-  { name: 'Circles', href: '/circles' },
   { name: 'Rules',   href: '/rules' }
 ]
 
