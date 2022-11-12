@@ -20,7 +20,7 @@ data.each do |item|
   next if downloaded.include? country_code
   downloaded << country_code
   puts "Downloading #{country_code} flag"
-  open("#{country_code}.png", 'wb') do |file|
+  open("../src/assets/#{country_code}.png", 'wb') do |file|
     flag_uri = URI.parse("#{FLAGS_URL}/#{country_code}")
     file << flag_uri.open.read
     count += 1
