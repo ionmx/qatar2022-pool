@@ -7,8 +7,8 @@ import 'moment-timezone';
 
 const PredictionItem = (match: PredictionProps) => {
   const user = useAuth()?.user;
-  const homeFlag = require('../assets/' + match.home + '.webp');
-  const awayFlag = require('../assets/' + match.away + '.webp');
+  const homeFlag = require('../assets/' + match.home + '.png');
+  const awayFlag = require('../assets/' + match.away + '.png');
 
   const homePredictionHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     set(ref(db, `predictions/${user?.uid}/${match.id}/homePrediction`), event.target.value);
