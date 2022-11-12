@@ -3,8 +3,8 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 const MatchItem = (match: MatchProps) => {
-  const homeFlag = require('../assets/' + match.home + '.webp');
-  const awayFlag = require('../assets/' + match.away + '.webp');
+  const homeFlag = require('../assets/' + match.home + '.png');
+  const awayFlag = require('../assets/' + match.away + '.png');
 
   return (
     <div className="py-4 px-8 bg-white shadow-lg rounded-lg my-2">
