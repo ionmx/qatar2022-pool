@@ -16,15 +16,15 @@ def build_teams(data)
   data.each do |item|
     round = item.dig('StageName', 0, 'Description')
     next if round != 'First stage'
-    abbv = item.dig('Home', 'Abbreviation')
-    hash[abbv] = 
+    country_code = item.dig('Home', 'Abbreviation')
+    hash[country_code] = 
       {
-        code: abbv,
+        code: country_code,
         name: item.dig('Home', 'ShortClubName'),
         group: item.dig('GroupName', 0, 'Description').sub('Group ', '')
       }
   end
-  hash
+  hash.sort_by { |_k, v| v[:code] }.to_h
 end
 
 def build_matches(data)
@@ -37,6 +37,7 @@ def build_matches(data)
     hash["#{game}"] = 
      {
         game: game,
+        fifaId: item.dig('IdMatch'),
         round: round,
         group: item.dig('GroupName', 0, 'Description').sub('Group ', ''),
         date: item.dig('Date'),
