@@ -41,12 +41,13 @@ def build_matches(data)
         round: round,
         group: item.dig('GroupName', 0, 'Description').sub('Group ', ''),
         date: item.dig('Date'),
+        timestamp: DateTime.parse(item.dig('Date')).to_time.to_i,
         location: item.dig('Stadium', 'Name', 0, 'Description'),
         home: item.dig('Home', 'Abbreviation'),
         homeName: item.dig('Home', 'ShortClubName'),
         homeScore: -1,
-        away: item.dig('Home', 'Abbreviation'),
-        awayName: item.dig('Home', 'ShortClubName'),
+        away: item.dig('Away', 'Abbreviation'),
+        awayName: item.dig('Away', 'ShortClubName'),
         awayScore: -1
       }  
   end
