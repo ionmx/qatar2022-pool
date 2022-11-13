@@ -54,39 +54,38 @@ function App() {
 
   }, []);
 
-  const updateScores = async() => {
-    const date = new Date();
-    let currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-    const competition = 'af79lqrc0ntom74zq13ccjslo';
-    const data_url = `https://api.fifa.com/api/v3/calendar/matches?count=500&from=${currentDate}T00:00:00Z&to=${currentDate}T23:59:59Z&idCompetition=${competition}&count=500`
+  // const updateScores = async() => {
+  //   const date = new Date();
+  //   let currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  //   const competition = 'af79lqrc0ntom74zq13ccjslo';
+  //   const data_url = `https://api.fifa.com/api/v3/calendar/matches?count=500&from=${currentDate}T00:00:00Z&to=${currentDate}T23:59:59Z&idCompetition=${competition}&count=500`
 
-    fetch(data_url)
-      .then((response) => response.json())
-      .then((data) => {
-        data.Results.forEach((item: any) => {
-          if (matches) {
-            for (let i = 0; i < matches?.length; i++) {
-              if (matches[i].fifaId === item.IdMatch) {
-                if (matches[i].homeScore !== item.Home.Score) {
-                  set(ref(db, `matches/${matches[i].game}/homeScore`), item.Home.Score);
-                }
-                if (matches[i].awayScore !== item.Away.Score) {
-                  set(ref(db, `matches/${matches[i].game}/awayScore`), item.Away.Score);
-                }
-                break;
-              }
-            }
-          }
-        });
-      });
-  }
+  //   fetch(data_url)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       data.Results.forEach((item: any) => {
+  //         if (matches) {
+  //           for (let i = 0; i < matches?.length; i++) {
+  //             if (matches[i].fifaId === item.IdMatch) {
+  //               if (matches[i].homeScore !== item.Home.Score) {
+  //                 set(ref(db, `matches/${matches[i].game}/homeScore`), item.Home.Score);
+  //               }
+  //               if (matches[i].awayScore !== item.Away.Score) {
+  //                 set(ref(db, `matches/${matches[i].game}/awayScore`), item.Away.Score);
+  //               }
+  //               break;
+  //             }
+  //           }
+  //         }
+  //       });
+  //     });
+  // }
 
   let matchDate = '';
   return (
     <>
       <Navbar />
       <DefaultContainer>
-        <div onClick={updateScores}>CALL getScores</div>
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
           <div>
             <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
