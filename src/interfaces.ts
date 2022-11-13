@@ -5,7 +5,7 @@ export interface MatchProps {
   round: number;
   group: string;
   date: string;
-  timestamp: BigInteger;
+  timestamp: number;
   location: string;
   home: string;
   homeName: string;
