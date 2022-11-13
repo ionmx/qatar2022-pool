@@ -1,9 +1,9 @@
 import { useEffect, useState, Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from "./config/firebase";
-import { ref, onValue, DatabaseReference } from 'firebase/database';
+import { ref, set, onValue, DatabaseReference } from 'firebase/database';
 import './App.css';
-import { UserProps } from './interfaces'
+import { MatchProps, UserProps } from './interfaces'
 import Navbar from "./components/Navbar";
 import { DefaultContainer } from './components/Containers';
 import MatchItem from './components/MatchItem'
@@ -14,10 +14,10 @@ import moment from 'moment'
 function App() {
   const [users, setUsers] = useState<UserProps[] | null>(null);
   const navigate = useNavigate();
+  const currentDate = moment(new Date()).format('YYYYMMDD');
 
   // TODO: Display current user position
 
-  // TODO: Display today matches
   const matches = useMatches();
 
   const getOrdinalSuffix = ((n: number) => {
@@ -54,18 +54,41 @@ function App() {
 
   }, []);
 
+  const updateScores = async() => {
+    const date = new Date();
+    let currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    const competition = 'af79lqrc0ntom74zq13ccjslo';
+    const data_url = `https://api.fifa.com/api/v3/calendar/matches?count=500&from=${currentDate}T00:00:00Z&to=${currentDate}T23:59:59Z&idCompetition=${competition}&count=500`
+
+    fetch(data_url)
+      .then((response) => response.json())
+      .then((data) => {
+        data.Results.forEach((item: any) => {
+          if (matches) {
+            for (let i = 0; i < matches?.length; i++) {
+              if (matches[i].fifaId === item.IdMatch) {
+                if (matches[i].homeScore !== item.Home.Score) {
+                  set(ref(db, `matches/${matches[i].game}/homeScore`), item.Home.Score);
+                }
+                if (matches[i].awayScore !== item.Away.Score) {
+                  set(ref(db, `matches/${matches[i].game}/awayScore`), item.Away.Score);
+                }
+                break;
+              }
+            }
+          }
+        });
+      });
+  }
+
   let matchDate = '';
-  let currentDate = moment(new Date()).format('YYYYMMDD');
-  currentDate = '20221121';  // FIXME: For dev purposes we use first match date 
-
-
   return (
     <>
       <Navbar />
       <DefaultContainer>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div onClick={updateScores}>CALL getScores</div>
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
           <div>
-            <h2 className="text-2xl my-4 font-bold text-gray-900">Today's games</h2>
             <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
               {matches?.map((match) => {
                 matchDate = moment(match.date).format('YYYYMMDD');
