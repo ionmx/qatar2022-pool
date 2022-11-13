@@ -18,6 +18,12 @@ const PredictionItem = (match: PredictionProps) => {
     set(ref(db, `predictions/${user?.uid}/${match.id}/awayPrediction`), event.target.value);
   };
 
+  const isEditable = () => {
+    let twoHours = 7200;  // Two hours before
+    let now = Math.floor(new Date().getTime() / 1000);
+    return match.timestamp - now > twoHours;
+  }
+  
   return (
     <div className="py-4 px-8 bg-white shadow-lg rounded-lg my-2">
       <table className="w-full border-separate [border-spacing:0.75rem]">
@@ -26,7 +32,7 @@ const PredictionItem = (match: PredictionProps) => {
             <td className="w-10"><img className="w-12 border" alt={match.home} src={homeFlag} /></td>
             <td className="text-xl">{match.homeName}</td>
             <td className="text-right">
-              {match.uid === user?.uid && (
+              {isEditable() && match.uid === user?.uid && (
                 <input
                   type="number"
                   value={match.homePrediction! > -1 ? match.homePrediction : ''}
@@ -34,7 +40,7 @@ const PredictionItem = (match: PredictionProps) => {
                   className="w-16 shadow appearance-none border rounded py-1 px-2 text-gray-700 leading-tight text-center outline-none"
                 />
               )}
-              {match.uid !== user?.uid && (
+              {(!isEditable() || match.uid !== user?.uid) && (
                 <span className="border p-2 rounded-md bg-gray-100">{match.homePrediction! > -1 ? match.homePrediction : '-'}</span>
               )}
             </td>
@@ -49,7 +55,7 @@ const PredictionItem = (match: PredictionProps) => {
             <td><img className="w-12 border" alt={match.away} src={awayFlag} /></td>
             <td className="text-xl">{match.awayName}</td>
             <td className="text-right">
-              {match.uid === user?.uid && (
+              {isEditable() && match.uid === user?.uid && (
                 <input
                   type="number"
                   value={match.awayPrediction! > -1 ? match.awayPrediction : ''}
@@ -57,7 +63,7 @@ const PredictionItem = (match: PredictionProps) => {
                   className="w-16 shadow appearance-none border rounded py-1 px-2 text-gray-700 leading-tight text-center outline-none"
                 />
               )}
-              {match.uid !== user?.uid && (
+              {(!isEditable() || match.uid !== user?.uid) && (
                 <span className="border p-2 rounded-md bg-gray-100">{match.awayPrediction! > -1 ? match.awayPrediction : '-'}</span>
               )}
             </td>
