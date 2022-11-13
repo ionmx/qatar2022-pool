@@ -1,6 +1,7 @@
 export interface MatchProps {
   id: string;
   game: number;
+  fifaId: string;
   round: number;
   group: string;
   date: string;
