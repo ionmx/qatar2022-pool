@@ -31,7 +31,7 @@ const PredictionItem = (match: PredictionProps) => {
                   type="number"
                   value={match.homePrediction! > -1 ? match.homePrediction : ''}
                   onChange={homePredictionHandler}
-                  className="w-16 shadow appearance-none border rounded py-1 px-2 text-gray-700 leading-tight text-center appearance-none outline-none"
+                  className="w-16 shadow appearance-none border rounded py-1 px-2 text-gray-700 leading-tight text-center outline-none"
                 />
               )}
               {match.uid !== user?.uid && (
@@ -54,7 +54,7 @@ const PredictionItem = (match: PredictionProps) => {
                   type="number"
                   value={match.awayPrediction! > -1 ? match.awayPrediction : ''}
                   onChange={awayPredictionHandler}
-                  className="w-16 shadow appearance-none border rounded py-1 px-2 text-gray-700 leading-tight text-center appearance-none outline-none"
+                  className="w-16 shadow appearance-none border rounded py-1 px-2 text-gray-700 leading-tight text-center outline-none"
                 />
               )}
               {match.uid !== user?.uid && (
