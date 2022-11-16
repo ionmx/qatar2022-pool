@@ -21,7 +21,7 @@ jobs:
           REACT_APP_FIREBASE_MESSAGING_SENDER_ID: secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
           REACT_APP_FIREBASE_APP_ID: secrets.REACT_APP_FIREBASE_APP_ID
           REACT_APP_FIREBASE_MEASUREMENT_ID: secrets.REACT_APP_FIREBASE_MEASUREMENT_ID
-        run: echo "Envirnonment has been setup"
+        run: echo "Envirnonment has been setup for project {{env.REACT_APP_FIREBASE_PROJECT_ID}}"
       - run: yarn install
       - run: yarn run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
