@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: Borales/actions-yarn@v3
-      - run: yarn build
+      - run: |
+        cd qatar2022-pool/qatar2022-pool
+        yarn build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
