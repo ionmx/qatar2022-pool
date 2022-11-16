@@ -1,5 +1,7 @@
 # QATAR 2022 FIFA World Cup Pool
 
+[![Deploy to Firebase Hosting on merge](https://github.com/ionmx/qatar2022-pool/actions/workflows/firebase-hosting-merge.yml/badge.svg)](https://github.com/ionmx/qatar2022-pool/actions/workflows/firebase-hosting-merge.yml)
+
 Web application to manage QATAR 2022 FIFA World Cup Pool.
 
 You can log into my pool in: https://goool.app
