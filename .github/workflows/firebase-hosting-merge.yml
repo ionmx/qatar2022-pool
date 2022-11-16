@@ -10,10 +10,9 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: Borales/actions-yarn@v3
-      - run: |
-        cd qatar2022-pool/qatar2022-pool
-        yarn build
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
