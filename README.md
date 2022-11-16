@@ -4,7 +4,7 @@
 
 Web application to manage QATAR 2022 FIFA World Cup Pool.
 
-You can log into my pool in: https://goool.app
+See it in action: https://goool.app
 
 Features:
 * Realtime results for matches and leaderboard.
@@ -69,7 +69,7 @@ Since this project uses Firebase, you can choose [Firebase Hosting](https://fire
 
 ## Cloud Functions 
 
-This project uses Cloud Functions to get the scores for the matches each minute and trigger user score updates.\
+This project uses Cloud Functions to fetch scores for the matches and trigger user score updates.\
 Repository and install instruccions for [qatar2022-pool-functions](https://github.com/ionmx/qatar2022-pool-functions).
 
 
