@@ -13,7 +13,6 @@
 .env.production.local
 .firebase
 .nvmrc
-.firebaserc
 
 npm-debug.log*
 yarn-debug.log*
