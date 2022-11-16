@@ -9,6 +9,7 @@ import { DefaultContainer } from './components/Containers';
 import MatchItem from './components/MatchItem'
 import { useMatches } from './context/MatchesContext'
 import moment from 'moment'
+import { getOrdinalSuffix } from './utils';
 
 
 function App() {
@@ -19,12 +20,6 @@ function App() {
   // TODO: Display current user position
 
   const matches = useMatches();
-
-  const getOrdinalSuffix = ((n: number) => {
-    const s = ["th", "st", "nd", "rd"];
-    const v = n % 100;
-    return s[(v - 20) % 10] || s[v] || s[0];
-  });
 
   useEffect(() => {
     const usersRef: DatabaseReference = ref(db, 'users');
