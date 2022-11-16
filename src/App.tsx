@@ -1,7 +1,7 @@
 import { useEffect, useState, Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from "./config/firebase";
-import { ref, set, onValue, DatabaseReference } from 'firebase/database';
+import { ref, onValue, DatabaseReference } from 'firebase/database';
 import './App.css';
 import { MatchProps, UserProps } from './interfaces'
 import Navbar from "./components/Navbar";
@@ -62,7 +62,7 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
           <div>
             <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
-              {matches?.map((match) => {
+              {matches?.map((match: MatchProps) => {
                 matchDate = moment(match.date).format('YYYYMMDD');
                 if (matchDate === currentDate) {
                   return (
