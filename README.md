@@ -4,7 +4,7 @@
 
 Web application to manage QATAR 2022 FIFA World Cup Pool.
 
-See it in action: https://goool.app
+Come out and play here: https://qatar2022pool.web.app
 
 Features:
 * Realtime results for matches and leaderboard.
