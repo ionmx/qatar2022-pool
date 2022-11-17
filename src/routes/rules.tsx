@@ -12,6 +12,8 @@ const Rules = () => {
       <Navbar />
       <Header title="Rules"/>
       <DefaultContainer>
+        <h2 className="text-2xl font-bold text-gray-900 pt-8">Predictions</h2>
+        <p className="pt-2">You can input your predictions until 2 hours before game starts</p>
         <h2 className="text-2xl font-bold text-gray-900 pt-8">Exact Score</h2>
         <p className="pt-2">If you predict the exact final score of a game you get <span className="font-bold">15 points</span>.</p>
         <h2 className="text-2xl font-bold text-gray-900 pt-8">Winner Prediction</h2>
