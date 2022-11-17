@@ -25,16 +25,27 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   const [authLoading, setAuthLoading] = useState<Boolean>(true);
 
   useEffect(() => {
-    auth.onAuthStateChanged(u => {
+    // FIXME: Set a type instead of any...
+    auth.onAuthStateChanged((u: any) => {
       setUser(u);
+      
       if (u) {
+        let username: string = '';
+        let email: string = '' + u?.email;
+        const screename: string = u?.reloadUserInfo.screenName;
+        if (screename) {
+          username = screename;
+          if (!email) {
+            email = username;
+          }
+        } else {
+          username = email.substring(0, email.lastIndexOf("@"));
+        }
+
         const dbRef: DatabaseReference = ref(db);
         get(child(dbRef, `users/${u?.uid}`)).then((snapshot: DataSnapshot) => {
           // Add user if doesn't exists
           if (!snapshot.exists()) {
-            const email: string = '' + u.email;
-            let username: string = email.substring(0, email.lastIndexOf("@"));
-
             // Search for duplicated username
             const q = query(ref(db, 'users'), orderByChild('userName'), equalTo(`${username}`));
             get(q).then((userSnapshot) => {
