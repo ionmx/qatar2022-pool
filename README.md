@@ -21,11 +21,12 @@ Stack:
 ## Screenshots
 
 ### Predictions
-<img width="640" alt="predictions" src="https://user-images.githubusercontent.com/119507/170556460-d1efc17c-90e4-4107-b150-c35a1ed41943.png">
+
+<img width="1381" alt="Screenshot 2022-11-17 at 23 59 28" src="https://user-images.githubusercontent.com/119507/202636285-07bd21a8-cf58-4da8-bf91-44f217663618.png">
 
 ### Leaderboard
-<img width="640" alt="main" src="https://user-images.githubusercontent.com/119507/170556475-938e40aa-a0bb-422f-bd07-0dbb4d6fe7a9.png">
 
+<img width="1382" alt="Screenshot 2022-11-17 at 23 58 55" src="https://user-images.githubusercontent.com/119507/202636236-a6a86b0e-cf76-41de-ae81-8cf51c16b268.png">
 
 ## Install
 
