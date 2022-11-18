@@ -40,7 +40,7 @@ const Rules = () => {
               </tr>
               <tr>
                 <td className="bold text-right pr-4">Formula:</td>
-                <td className="text-center" colSpan={3}>10 - (2 - 1) - (1 - 0)</td>
+                <td className="text-center" colSpan={3}>10 - |2 - 1| - |1 - 0|</td>
               </tr>
               <tr>
                 <td className="bold text-right pr-4">You get:</td>
