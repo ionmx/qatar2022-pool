@@ -59,14 +59,14 @@ export default function UserProfile() {
   return (
     <>
       <Navbar />
-      <header className="bg-white shadow md:block px-2 py-4 top-16 relative">
+      <header className="bg-white md:block px-2 py-4 top-16 relative border-b-4  border-[#faa458]">
         { user && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <table className="w-full">
             <tbody>
               <tr>
                 <td className={`w-14 h-14 ranking-${user.ranking}`}><img className="h-12 w-12 rounded-full" alt={user.userName} src={user.photoURL} /></td>
-                <td className="text-3xl font-bold text-gray-900">{user.displayName}</td>
+                <td className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#c6004c] to-[#8d1946]">{user.displayName}</td>
                 <td className="text-right text-xl">{user.score} points</td>
               </tr>
             </tbody>

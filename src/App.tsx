@@ -70,8 +70,10 @@ function App() {
             </div>
           </div>
           <div>
-            <h2 className="text-2xl my-4 font-bold text-gray-900">Leaderboard</h2>
             <div className="py-4 px-8 bg-white shadow-lg rounded-lg my-2">
+              <div className="text-center py-2">
+                <span className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#c6004c] to-[#8d1946]">Leaderboard</span>
+              </div>
               <table className="w-full border-separate [border-spacing:0.75rem]">
                 <tbody>
                   {users && users?.map((user) => {
@@ -89,7 +91,6 @@ function App() {
             </div>
           </div>
         </div>
-
       </DefaultContainer>
     </>
   );
