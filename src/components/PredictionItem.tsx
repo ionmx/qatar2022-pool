@@ -10,12 +10,26 @@ const PredictionItem = (match: PredictionProps) => {
   const homeFlag = require('../assets/' + match.home + '.png');
   const awayFlag = require('../assets/' + match.away + '.png');
 
+  const showSavedNotification = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    element?.classList.add('animate-spin');
+    setTimeout(() => {
+      element?.classList.remove('animate-spin');
+    }, 1000);
+  }
+
   const homePredictionHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    set(ref(db, `predictions/${user?.uid}/${match.id}/homePrediction`), event.target.value);
+    set(ref(db, `predictions/${user?.uid}/${match.id}/homePrediction`), event.target.value)
+      .then(() => {
+        showSavedNotification(`flag-home-${match.id}`);
+      });
   };
 
   const awayPredictionHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    set(ref(db, `predictions/${user?.uid}/${match.id}/awayPrediction`), event.target.value);
+    set(ref(db, `predictions/${user?.uid}/${match.id}/awayPrediction`), event.target.value)
+      .then(() => {
+        showSavedNotification(`flag-away-${match.id}`);
+      });
   };
 
   const isEditable = () => {
@@ -29,7 +43,7 @@ const PredictionItem = (match: PredictionProps) => {
       <table className="w-full border-separate [border-spacing:0.75rem]">
         <tbody>
           <tr>
-            <td className="w-10"><img className="w-12 border" alt={match.home} src={homeFlag} /></td>
+            <td className="w-10"><img id={`flag-home-${match.id}`} className="w-12 border" alt={match.home} src={homeFlag} /></td>
             <td className="text-xl">{match.homeName}</td>
             <td className="text-right">
               {isEditable() && match.uid === user?.uid && (
@@ -52,7 +66,7 @@ const PredictionItem = (match: PredictionProps) => {
             </td>
           </tr>
           <tr>
-            <td><img className="w-12 border" alt={match.away} src={awayFlag} /></td>
+            <td><img id={`flag-away-${match.id}`} className="w-12 border" alt={match.away} src={awayFlag} /></td>
             <td className="text-xl">{match.awayName}</td>
             <td className="text-right">
               {isEditable() && match.uid === user?.uid && (
