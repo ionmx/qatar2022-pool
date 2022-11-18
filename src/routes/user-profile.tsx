@@ -63,11 +63,13 @@ export default function UserProfile() {
         { user && (
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <table className="w-full">
-            <tr>
-              <td className={`w-14 h-14 ranking-${user.ranking}`}><img className="h-12 w-12 rounded-full" alt={user.userName} src={user.photoURL} /></td>
-              <td className="text-3xl font-bold text-gray-900">{user.displayName}</td>
-              <td className="text-right text-xl">{user.score} points</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td className={`w-14 h-14 ranking-${user.ranking}`}><img className="h-12 w-12 rounded-full" alt={user.userName} src={user.photoURL} /></td>
+                <td className="text-3xl font-bold text-gray-900">{user.displayName}</td>
+                <td className="text-right text-xl">{user.score} points</td>
+              </tr>
+            </tbody>
           </table>
           </div>
         )}
