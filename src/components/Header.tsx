@@ -3,7 +3,7 @@ interface HeaderProps {
 }
 const Header = ({ title }: HeaderProps) => {
   return (
-    <header className="bg-white shadow hidden md:block">
+    <header className="bg-white shadow hidden md:block top-16 relative">
       <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
       </div>

@@ -8,8 +8,6 @@ import Navbar from '../components/Navbar';
 import PredictionItem from '../components/PredictionItem';
 import moment from 'moment'
 import { PredictionsContainer } from '../components/Containers';
-import { getOrdinalSuffix } from '../utils';
-
 
 export default function UserProfile() {
   const matches = useMatches();
@@ -61,16 +59,17 @@ export default function UserProfile() {
   return (
     <>
       <Navbar />
-      <header className="bg-white shadow md:block px-2 py-4">
+      <header className="bg-white shadow md:block px-2 py-4 top-16 relative">
         { user && (
-          <table className="max-w-7xl mx-auto py-20 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <table className="w-full">
             <tr>
-              <td className="text-right text-gray-500">{user.ranking}<sup>{getOrdinalSuffix(user.ranking)}</sup></td>
               <td className={`w-14 h-14 ranking-${user.ranking}`}><img className="h-12 w-12 rounded-full" alt={user.userName} src={user.photoURL} /></td>
               <td className="text-3xl font-bold text-gray-900">{user.displayName}</td>
               <td className="text-right text-xl">{user.score} points</td>
             </tr>
           </table>
+          </div>
         )}
       </header>
       <PredictionsContainer>

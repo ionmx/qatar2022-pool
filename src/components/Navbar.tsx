@@ -34,7 +34,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   
   return (
-    <Disclosure as="nav" className="bg-[#56042C]">
+    <Disclosure as="nav" className="bg-[#56042C] fixed w-full z-20 top-0 left-0">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -82,8 +82,6 @@ const Navbar = () => {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-
                 {/* Profile dropdown */}
                 {user && (
                   <Menu as="div" className="ml-3 relative">
