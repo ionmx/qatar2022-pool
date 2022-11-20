@@ -68,11 +68,21 @@ You can take a look about [deployment](https://create-react-app.dev/docs/deploym
 
 Since this project uses Firebase, you can choose [Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart). 
 
-## Cloud Functions 
+## Updating scores
+
+
+### Cloud Functions 
 
 This project uses Cloud Functions to fetch scores for the matches and trigger user score updates.\
 Repository and install instruccions for [qatar2022-pool-functions](https://github.com/ionmx/qatar2022-pool-functions).
 
+### Manually
+
+You can run update scores script
+
+```node update-scores.js```
+
+[Detailed instructions](https://github.com/ionmx/qatar2022-pool/blob/main/utils/update-scores/config.json)
 
 ## Contribute
 

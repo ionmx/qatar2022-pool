@@ -6,8 +6,7 @@ const fetch = require('node-fetch');
 // --------------------------------------------------------
 const date = new Date();
 const currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-//const competition = '17'; // Worlcup 2022
-const competition = 'by5nibd18nkt40t0j8a0j5yzx'
+const competition = '17'; // Worlcup 2022
 const dataUrl = `https://api.fifa.com/api/v3/calendar/matches?count=500&from=${currentDate}T00:00:00Z&to=${currentDate}T23:59:59Z&idCompetition=${competition}`;
 
 // --------------------------------------------------------
