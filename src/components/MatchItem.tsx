@@ -7,7 +7,7 @@ const MatchItem = (match: MatchProps) => {
   const awayFlag = require('../assets/' + match.away + '.png');
 
   return (
-    <div className="py-4 px-8 bg-white shadow-lg rounded-lg my-2">
+    <div className="py-2 px-2 bg-white shadow-lg rounded-lg my-2">
       <table className="w-full border-separate [border-spacing:0.75rem]">
         <tbody>
           <tr>
