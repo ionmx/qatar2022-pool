@@ -42,6 +42,10 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
           username = email.substring(0, email.lastIndexOf("@"));
         }
 
+        if (username === '') {
+          username = u?.uid;
+        }
+
         const dbRef: DatabaseReference = ref(db);
         get(child(dbRef, `users/${u?.uid}`)).then((snapshot: DataSnapshot) => {
           // Add user if doesn't exists
