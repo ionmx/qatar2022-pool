@@ -70,7 +70,7 @@ function App() {
             </div>
           </div>
           <div>
-            <div className="py-4 px-8 bg-white shadow-lg rounded-lg my-2">
+            <div className="py-2 px-4 bg-white shadow-lg rounded-lg my-2">
               <div className="text-center py-2">
                 <span className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#c6004c] to-[#8d1946]">Leaderboard</span>
               </div>
@@ -81,8 +81,8 @@ function App() {
                       <tr key={user.id} onClick={() => navigate(`/user/${user.userName}`)} className="hover:cursor-pointer">
                         <td className="text-right text-gray-500">{user.ranking}<sup>{getOrdinalSuffix(user.ranking)}</sup></td>
                         <td className={`w-14 h-14 ranking-${user.ranking}`}><img className="h-12 w-12 rounded-full" alt={user.userName} src={user.photoURL} /></td>
-                        <td className="text-xl">{user.displayName}</td>
-                        <td className="text-right text-xl">{user.score}</td>
+                        <td className="text-l md:text-xl">{user.displayName}</td>
+                        <td className="text-right text-l md:text-xl">{user.score}</td>
                       </tr>
                     )
                   })}
