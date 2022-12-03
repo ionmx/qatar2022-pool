@@ -33,22 +33,25 @@ def build_matches(data)
   data.each do |item|
     game += 1
     round = item.dig('StageName', 0, 'Description')
-    next if round != 'First stage'
+    group = item.dig('GroupName', 0, 'Description')
+    group = group.sub('Group ', '') if group
+    next if !item.dig('Home', 'Abbreviation')
+
     hash["#{game}"] = 
      {
         game: game,
         fifaId: item.dig('IdMatch'),
         round: round,
-        group: item.dig('GroupName', 0, 'Description').sub('Group ', ''),
+        group: group, 
         date: item.dig('Date'),
         timestamp: DateTime.parse(item.dig('Date')).to_time.to_i,
         location: item.dig('Stadium', 'Name', 0, 'Description'),
         home: item.dig('Home', 'Abbreviation'),
         homeName: item.dig('Home', 'ShortClubName'),
-        homeScore: -1,
+        homeScore:  item.dig('Home', 'Score') ?  item.dig('Home', 'Score') : -1,
         away: item.dig('Away', 'Abbreviation'),
         awayName: item.dig('Away', 'ShortClubName'),
-        awayScore: -1
+        awayScore: item.dig('Away', 'Score') ? item.dig('Away', 'Score') : -1
       }  
   end
   hash
